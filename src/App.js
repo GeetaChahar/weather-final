@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 const api = {
   key: "f0f1f303a9cf09303269d4e32e48e9e0",
-  base: "https://api.openweathermap.org/data/3.0/"
+  base: "https://api.openweathermap.org/data/2.5/"
 }
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
 
   const search = evt => {
     if (evt.key === "Enter") {
-      fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+      fetch(`${api.base}weather?q=${query}&units=metric&appid=${api.key}`)
         .then(res => res.json())
         .then(result => {
           setWeather(result);
@@ -62,6 +62,7 @@ function App() {
               </div>
               <div className='weather'>{weather.weather[0].main}</div>
             </div>
+            <div className='not-found'>City Not found</div>
           </div>
         ) : ('')}
       </main>
